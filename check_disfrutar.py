@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 
 # Configuración de tu bot de Telegram
-bot_token = "tu_bot_token"  # Cambia esto por el token de tu bot
-chat_id = "tu_chat_id"  # Cambia esto por tu chat ID
+bot_token = "8169262271:AAF2moqkb5FBGjVsKjSAsIOfU_fbJjFmius"  # Cambia esto por el token de tu bot
+chat_id = "7045047535"  # Cambia esto por tu chat ID
 
 # Función para enviar el mensaje a través de Telegram
 def send_telegram_message(message):
@@ -15,7 +15,6 @@ def send_telegram_message(message):
     }
     try:
         response = requests.post(url, data=payload)
-        # Imprimir la respuesta de la API de Telegram
         print(f"Respuesta de Telegram: {response.text}")
         if response.status_code == 200:
             print(f"Mensaje enviado a Telegram: {message}")
@@ -43,17 +42,21 @@ def check_reservations():
 
             if availability:
                 message = f"{datetime.now()}: ¡Hay reservas disponibles!"
-                print(message)  # Imprimir en la pantalla
-                send_telegram_message(f"¡Reserva disponible en Disfrutar! A las {datetime.now()}. ¡Date prisa!")  # Enviar a Telegram
             else:
                 message = f"{datetime.now()}: No hay reservas disponibles."
-                print(message)  # Imprimir en la pantalla
+
+            print(message)  # Imprimir en la pantalla
+            send_telegram_message(message)  # Enviar a Telegram
+
         else:
             print(f"{datetime.now()}: Error al acceder a la página. Código de estado: {response.status_code}")
+            send_telegram_message(f"{datetime.now()}: Error al acceder a la página. Código de estado: {response.status_code}")  # Enviar error al Telegram
 
     except Exception as e:
         print(f"{datetime.now()}: Error al comprobar reservas: {e}")
+        send_telegram_message(f"{datetime.now()}: Error al comprobar reservas: {e}")  # Enviar error al Telegram
 
 # Ejecución principal
 if __name__ == "__main__":
     check_reservations()
+    
