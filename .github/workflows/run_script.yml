@@ -2,7 +2,7 @@ name: Ejecutar script cada 5 minutos
 
 on:
   schedule:
-    - cron: "*/5 * * * *"  # Esto ejecutará el script cada 5 minutos
+    - cron: "*/3 * * * *"  # Esto ejecutará el script cada 5 minutos
   workflow_dispatch:  # Esto permite ejecutar el flujo manualmente si lo deseas
 
 jobs:
