@@ -20,4 +20,4 @@ jobs:
 
       - name: Ejecutar el script
         run: |
-          python3 check_disfurtar.py  # O el nombre de tu script
+          python3 check_disfrutar.py  # O el nombre de tu script
